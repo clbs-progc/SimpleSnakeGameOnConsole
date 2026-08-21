@@ -42,15 +42,18 @@ int rng(int seed, int range)
     return RandomGen1;
 }
 
+
 int main()
 {
     int playerPosY = 30, playerPosX = 30;
+    //SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     //declaring const
     int test = 0;
     int info = 0, dd = 10, incrementX = 0, incrementY = -1, movepoints = 0, ETorF = 0, point = 0, gameover = 0, contpoints = 0, raa = rand();
     int nScreenHeightREAL = nScreenHeight-2, nScreenWidthREAL = nScreenWidth-2, raa2, ElapsedTime = 0, pause = 0;
     int sizeincrease = 1;
     clock_t start, end, start2;
+    //info = 1;
     int tickrateDes = 12;
     unsigned int SleepTime = 1000000/tickrateDes;
     unsigned long long int ulliTick = 0;
@@ -153,7 +156,6 @@ int main()
             }
 
             //CONTROLS
-            //mov(incrementY, incrementX, movepoints, playerPosY, playerPosX);
             if(GetAsyncKeyState('W')) //'W' VK_UP
             {
                 switch(movepoints)
@@ -226,7 +228,6 @@ int main()
                         switch(incrementX)
                         {
                             case -1:
-                                //incrementY = 0;
                                 incrementX = -1;
                             break;
 
@@ -259,7 +260,6 @@ int main()
             {
                     pause = 1;
                     movepoints = 1;
-
             }
             if(GetAsyncKeyState('L'))
             {
@@ -273,7 +273,6 @@ int main()
                     default:
                         break;
                 }
-
             }
             switch(movepoints)
             {
@@ -382,6 +381,11 @@ int main()
                 sizeincrease = 2;
                 contpoints = contpoints + 2;
                 playerSize = playerSize + 2;
+                falsescreen[ErandomY][ErandomX] = 'O';
+                ETorF = 0;
+                ErandomY = -1;
+                ErandomX = -1;
+            }
             //changing from false screen to real screen
             int f=0;
             for(int y = 0; y<nScreenHeight; y++)
